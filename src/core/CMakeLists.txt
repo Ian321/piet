@@ -8,4 +8,4 @@ ADD_LIBRARY(PietCore
   p_virtual_machine.cpp
   p_console_virtual_machine.cpp)
 
-TARGET_LINK_LIBRARIES(PietCore ${QT_LIBRARIES})
+TARGET_LINK_LIBRARIES(PietCore Qt5::Widgets)

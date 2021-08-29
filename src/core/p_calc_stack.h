@@ -54,7 +54,7 @@ class PCalcStack {
 		void clear();
 		void prepareToExecute();
 
-		int size();
+		size_t size();
 		std::list<int>::iterator begin_iterator();
 		std::list<int>::iterator end_iterator();
 		bool hasAtLeastNElements(unsigned int);

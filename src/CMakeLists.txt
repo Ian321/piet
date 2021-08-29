@@ -1,8 +1,7 @@
-INCLUDE(${QT_USE_FILE})
 ADD_DEFINITIONS(${QT_DEFINITIONS})
 
 ADD_SUBDIRECTORY(core)
 ADD_SUBDIRECTORY(gui)
 
 ADD_EXECUTABLE(piet-console console.cpp)
-TARGET_LINK_LIBRARIES(piet-console PietCore)
+TARGET_LINK_LIBRARIES(piet-console PietCore Qt5::Widgets)

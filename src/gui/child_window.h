@@ -3,6 +3,8 @@
 
 #include "machine_widget.h"
 
+#include <QMdiSubWindow>
+
 namespace Ui {
     class ChildWindow;
 }

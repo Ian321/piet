@@ -24,6 +24,7 @@ const char * PEnums::stdColor(PStdColors color)
 		case color_white: return "white";
 		case color_black: return "black";
 	}
+	return "undefined";
 }
 
 const char * PEnums::nonStdColorBehavior(PNonStdColorBehavior behavior)
@@ -35,6 +36,7 @@ const char * PEnums::nonStdColorBehavior(PNonStdColorBehavior behavior)
 		case beh_nearest_lower: return "nearest lower";
 		case beh_nearest_neighbour: return "nearest neighbour";
 	}
+	return "undefined";
 }
 
 const char * PEnums::codelChooser(PCodelChooserValues codel_chooser)
@@ -43,6 +45,7 @@ const char * PEnums::codelChooser(PCodelChooserValues codel_chooser)
 		case cc_left: return "left";
 		case cc_right: return "right";
 	}
+	return "undefined";
 }
 
 const char * PEnums::directionPointer(PDirectionPointerValues direction_pointer)
@@ -53,6 +56,7 @@ const char * PEnums::directionPointer(PDirectionPointerValues direction_pointer)
 		case dp_left: return "left";
 		case dp_up: return "up";
 	}
+	return "undefined";
 }
 
 const char * PEnums::machineState(PMachineStates state)
@@ -62,6 +66,7 @@ const char * PEnums::machineState(PMachineStates state)
 		case state_running: return "running";
 		case state_finished: return "finished";
 	}
+	return "undefined";
 }
 
 const char * PEnums::instruction(PInstructions instruction)
@@ -87,4 +92,5 @@ const char * PEnums::instruction(PInstructions instruction)
 		case pietInstr_io_out_char: return "print char";
 		case pietInstr_special_terminate: return "terminate";
 	}
+	return "undefined";
 }

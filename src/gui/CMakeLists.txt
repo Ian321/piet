@@ -1,7 +1,6 @@
 # Read more about configuring cmake with Qt at:
 # http://qt-project.org/quarterly/view/using_cmake_to_build_qt_projects
 
-INCLUDE(${QT_USE_FILE})
 ADD_DEFINITIONS(${QT_DEFINITIONS})
 
 INCLUDE_DIRECTORIES(
@@ -34,9 +33,9 @@ SET(gui_RESOURCES
   images.qrc
 )
 
-QT4_WRAP_CPP(gui_HEADERS_MOC ${gui_HEADERS})
-QT4_WRAP_UI(gui_FORMS_HEADERS ${gui_FORMS})
-QT4_ADD_RESOURCES(gui_RESOURCES_RCC ${gui_RESOURCES})
+QT5_WRAP_CPP(gui_HEADERS_MOC ${gui_HEADERS})
+QT5_WRAP_UI(gui_FORMS_HEADERS ${gui_FORMS})
+QT5_ADD_RESOURCES(gui_RESOURCES_RCC ${gui_RESOURCES})
 
 ADD_EXECUTABLE(gui
   p_gui_virtual_machine.cpp # this is not a UI file (no moc generated)
@@ -47,6 +46,6 @@ ADD_EXECUTABLE(gui
 )
 
 TARGET_LINK_LIBRARIES(gui
-  ${QT_LIBRARIES}
+  Qt5::Widgets
   PietCore
 )

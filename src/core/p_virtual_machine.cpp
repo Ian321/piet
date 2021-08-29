@@ -104,11 +104,11 @@ PMachineStates PVirtualMachine::getState()
 /** \brief ustawia stan wirtualnej maszyny Salvadora
  *
  * W każdej chwili istnienia, wirtualna maszyna Pieta musi znajdować się w jakimś stanie (PMachineStates). Metoda ustawia stan wirtualnej maszyny.
- * \param state stan jaki zostanie przypisany wirtualnej maszynie
+ * \param state_ stan jaki zostanie przypisany wirtualnej maszynie
  */
-void PVirtualMachine::setState(PMachineStates state)
+void PVirtualMachine::setState(PMachineStates state_)
 {
-	this->state = state;
+	state = state_;
 }
 
 /**
@@ -211,9 +211,9 @@ void PVirtualMachine::toggleVerbosity()
 	}
 }
 
-void PVirtualMachine::setVerbosity(bool verbose)
+void PVirtualMachine::setVerbosity(bool verbosity)
 {
-	setVerbosityRecursively(verbose);
+	setVerbosityRecursively(verbosity);
 }
 
 //=========================================================

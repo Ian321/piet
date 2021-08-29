@@ -5,7 +5,9 @@
 #include <sstream>
 
 #include <QtGui>
+#include <QFileDialog>
 #include <QMdiSubWindow>
+#include <QMessageBox>
 
 #include "p_enums.h"
 #include "p_structs.h"

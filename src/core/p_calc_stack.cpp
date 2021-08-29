@@ -71,7 +71,7 @@ void PCalcStack::prepareToExecute()
  * Zwraca rozmiar stosu.
  * @return rozmiar stosu
  */
-int PCalcStack::size()
+size_t PCalcStack::size()
 {
 	return values.size();
 }

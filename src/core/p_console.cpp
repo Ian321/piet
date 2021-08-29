@@ -72,7 +72,7 @@ void PConsole::printNumber(int I)
  */
 void PConsole::printChar(int I)
 {
-	unsigned char UC = I;
+	unsigned char UC = static_cast<unsigned char>(I);
 	if (verbose)
 		stream << "CONSOLE/out-char: ";
 //	stream << std::setw(3) << UC;

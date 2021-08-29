@@ -15,6 +15,7 @@
 
 // Qt
 #include <QtGui>
+#include <QInputDialog>
 #include <QString>
 
 /** \file pconsolevirtualmachine.cpp
@@ -29,8 +30,9 @@ PGuiVirtualMachine::PGuiVirtualMachine(const char * filename, std::stringstream 
     std::cout << "GUI VM" << std::endl;
 }
 
-bool PGuiVirtualMachine::validateNumber(int value)
+bool PGuiVirtualMachine::validateNumber(int)
 {
+    
     return true;
 }
 
@@ -39,7 +41,7 @@ void PGuiVirtualMachine::readNumber()
     std::cout << "GUI readNumber" << std::endl;
     int read;
     do {
-      read = QInputDialog::getInteger(
+      read = QInputDialog::getInt(
         0, "Piet input reading", "Enter a number:", 1);
     } while (!validateNumber(read));
     stack->instrPush(read);

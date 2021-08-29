@@ -23,9 +23,9 @@ ProgramImageWidget::~ProgramImageWidget()
     delete ui;
 }
 
-void ProgramImageWidget::setPiet(PGuiVirtualMachine *piet)
+void ProgramImageWidget::setPiet(PGuiVirtualMachine *piet_)
 {
-    this->piet = piet;
+    piet = piet_;
     image_created = true;
     render();
 }

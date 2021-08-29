@@ -3,6 +3,7 @@
 .project
 .cproject
 *~
+.vscode
 
 # Documentation
 doc/output

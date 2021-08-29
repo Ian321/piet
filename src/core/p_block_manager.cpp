@@ -222,7 +222,7 @@ int PBlockManager::findColumnBottomCodel(int column)
 void PBlockManager::findBorderCodels()
 {
 	bool found = false;
-	int h;
+	int h = 0;
 	for (int i=0; i<height; i++) {
 		for (int j=0; j<width; j++) {
 			if (fields[i][j] == 1) {
