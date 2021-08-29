@@ -22,7 +22,9 @@ jobs:
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
     - name: windeployqt
       if: startsWith(matrix.os, 'windows')
-      run: windeployqt ${{github.workspace}}/build/src/gui/${{env.BUILD_TYPE}}/gui.exe --release --no-compiler-runtime --no-translations --no-opengl-sw
+      run: |
+        windeployqt ${{github.workspace}}/build/src/gui/${{env.BUILD_TYPE}} --release --no-compiler-runtime --no-translations --no-opengl-sw
+        windeployqt ${{github.workspace}}/build/src/${{env.BUILD_TYPE}} --release --no-compiler-runtime --no-translations --no-opengl-sw
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:

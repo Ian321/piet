@@ -251,7 +251,7 @@ void PBlockManager::findBorderCodels()
  */
 PPoint PBlockManager::getNextPossibleCodel()
 {
-	PPoint new_point;
+	PPoint new_point = {0};
 	// w zależności od wartości DIRECTION POINTER
 	switch( pointer->getDirectionPointerValue() ) {
 	// dla każdego z 4 kierunków sprawdź wartość CODEL CHOOSER

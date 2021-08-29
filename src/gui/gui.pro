@@ -4,12 +4,23 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += widgets core gui
 
 TARGET = gui
 TEMPLATE = app
 
-LIBS += ../../build/src/core/libPietCore.a
+unix {
+    LIBS += ../../build/src/core/libPietCore.a
+}
+win32 {
+    CONFIG(release, debug|release) {
+        LIBS += ../../build/src/core/Release/PietCore.lib
+    }
+    CONFIG(debug, debug|release) {
+        LIBS += ../../build/src/core/Debug/PietCore.lib
+    }
+}
+
 INCLUDEPATH += ../core
 
 SOURCES += \

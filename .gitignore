@@ -10,6 +10,7 @@ doc/output
 
 # Compilation output
 build
+build-*/
 src/gui-build-desktop
 src/gui/gui.pro.user
 
