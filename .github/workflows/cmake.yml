@@ -11,6 +11,8 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
+        build-system: [qmake, cmake]
+        qt-version: [5.12.11]
       fail-fast: false
     steps:
     - uses: actions/checkout@v2

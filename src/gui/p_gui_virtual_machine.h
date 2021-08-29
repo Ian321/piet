@@ -19,6 +19,7 @@ class PGuiVirtualMachine : public PVirtualMachine {
 
 public:
     PGuiVirtualMachine(const char *, std::stringstream& );
+    virtual ~PGuiVirtualMachine(){}
 
 protected:
     bool validateNumber(int);

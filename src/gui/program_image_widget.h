@@ -4,6 +4,7 @@
 #include <QtGui>
 #include <QImage>
 #include <QString>
+#include <QGraphicsScene>
 #include <QWidget>
 
 #include "p_gui_virtual_machine.h"

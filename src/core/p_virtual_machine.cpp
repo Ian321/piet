@@ -260,7 +260,6 @@ bool PVirtualMachine::executeSingleInstr()
 		__dev__printConsole();
 	}
 	bool result = true; // czy operacja została wykonana
-	int ivar;
 	if ( isRunning() ) {
 		PInstructions instruction = movePointerAndGetInstructionToExecute();
 		if (verbose) {
@@ -278,7 +277,7 @@ bool PVirtualMachine::executeSingleInstr()
 				break;
 			case pietInstr_stack_pop:
 				if (stack->hasAtLeastNElements(1)) {
-					ivar = stack->instrPop(); // zdejmuje ze stosu liczbę (i nic z nią nie robi)
+					stack->instrPop(); // zdejmuje ze stosu liczbę (i nic z nią nie robi)
 				} else {
 					result = false;
 				}

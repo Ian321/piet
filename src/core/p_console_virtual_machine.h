@@ -30,6 +30,7 @@ class PConsoleVirtualMachine : public PVirtualMachine {
 	public:
 
 		PConsoleVirtualMachine(const char *, std::stringstream& );
+		virtual ~PConsoleVirtualMachine(){}
   
 	protected:
 
