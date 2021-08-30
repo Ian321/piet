@@ -13,20 +13,38 @@ jobs:
         os: [windows-latest, ubuntu-latest, macos-latest]
       fail-fast: false
     steps:
-    - uses: actions/checkout@v2
     - name: Install Qt
       uses: jurplel/install-qt-action@v2
+    - uses: actions/checkout@v2
     - name: Configure CMake
       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
     - name: Build
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
-    - name: windeployqt
+    - name: Create export dir
+      run: |
+        mkdir ${{github.workspace}}/export
+        mkdir ${{github.workspace}}/export/bin
+        mkdir ${{github.workspace}}/export/lib
+    - name: Copy files (not windows)
+      if: ${{ !startsWith(matrix.os, 'windows') }}
+      run: |
+        cp ${{github.workspace}}/build/src/piet-console ${{github.workspace}}/export/bin/
+        cp ${{github.workspace}}/build/src/gui/gui ${{github.workspace}}/export/bin/
+        cp ${{github.workspace}}/build/src/core/libPietCore.a ${{github.workspace}}/export/lib/
+    - name: Copy files (windows)
       if: startsWith(matrix.os, 'windows')
       run: |
-        windeployqt ${{github.workspace}}/build/src/gui/${{env.BUILD_TYPE}} --release --no-compiler-runtime --no-translations --no-opengl-sw
-        windeployqt ${{github.workspace}}/build/src/${{env.BUILD_TYPE}} --release --no-compiler-runtime --no-translations --no-opengl-sw
-    - name: Upload artifact
+        cp ${{github.workspace}}/build/src/${{env.BUILD_TYPE}}/piet-console.exe ${{github.workspace}}/export/bin/
+        cp ${{github.workspace}}/build/src/gui/${{env.BUILD_TYPE}}/gui.exe ${{github.workspace}}/export/bin/
+        cp ${{github.workspace}}/build/src/core/${{env.BUILD_TYPE}}/PietCore.lib ${{github.workspace}}/export/lib/
+        windeployqt ${{github.workspace}}/export/bin/ --release --no-compiler-runtime --no-translations --no-opengl-sw
+    - name: Upload build
       uses: actions/upload-artifact@v2
       with:
         name: piet-${{ matrix.os }}
         path: ${{github.workspace}}/build
+    - name: Upload export
+      uses: actions/upload-artifact@v2
+      with:
+        name: piet-${{ matrix.os }}-dist
+        path: ${{github.workspace}}/export
