@@ -21,7 +21,7 @@ jobs:
       run: choco install doxygen.install
     - name: Install Doxygen (ubuntu)
       if: startsWith(matrix.os, 'ubuntu')
-      run: apt install -y doxygen
+      run: sudo apt install -y doxygen
     - name: Install Doxygen (macos)
       if: startsWith(matrix.os, 'macos')
       run: brew install doxygen
@@ -49,6 +49,8 @@ jobs:
         cp ${{github.workspace}}/build/src/gui/${{env.BUILD_TYPE}}/gui.exe ${{github.workspace}}/export/bin/
         cp ${{github.workspace}}/build/src/core/${{env.BUILD_TYPE}}/PietCore.lib ${{github.workspace}}/export/lib/
         windeployqt ${{github.workspace}}/export/bin/ --release --no-compiler-runtime --no-translations --no-opengl-sw
+    - name: Copy docs
+      run: cp -r ${{github.workspace}}/build/doc/ ${{github.workspace}}/export/
     - name: Upload build
       uses: actions/upload-artifact@v2
       with:
