@@ -18,17 +18,13 @@ jobs:
     # <Doxygen>
     - name: Install Doxygen (windows)
       if: startsWith(matrix.os, 'windows')
-      run: |
-        choco install doxygen.install miktex.install
-        refreshenv
+      run: choco install doxygen.install
     - name: Install Doxygen (ubuntu)
       if: startsWith(matrix.os, 'ubuntu')
-      run: sudo apt install -y doxygen texlive texlive-font-utils
+      run: sudo apt install -y doxygen
     - name: Install Doxygen (macos)
       if: startsWith(matrix.os, 'macos')
-      run: |
-        brew install --cask doxygen basictex
-        eval "$(/usr/libexec/path_helper)"
+      run: brew install --cask doxygen
     # </Doxygen>
     - uses: actions/checkout@v2
     - name: Configure CMake
