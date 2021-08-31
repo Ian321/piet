@@ -18,7 +18,7 @@ jobs:
     # <Doxygen>
     - name: Install Doxygen (windows)
       if: startsWith(matrix.os, 'windows')
-      run: choco install doxygen.install
+      run: choco install doxygen.install manim-latex
     - name: Install Doxygen (ubuntu)
       if: startsWith(matrix.os, 'ubuntu')
       run: sudo apt install -y doxygen
@@ -52,6 +52,7 @@ jobs:
         windeployqt ${{github.workspace}}/export/bin/ --release --no-compiler-runtime --no-translations --no-opengl-sw
     - name: Copy docs
       run: cp -r ${{github.workspace}}/build/doc/ ${{github.workspace}}/export/doc/
+      continue-on-error: true
     - name: Upload build
       uses: actions/upload-artifact@v2
       with:
