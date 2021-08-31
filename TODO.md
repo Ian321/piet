@@ -6,4 +6,3 @@
 * provide an interface (abstract class) for all Qt-related operations (to make PVM independent on library used)
 * docs: pol -> eng
 * P[GUI]VM - virtual method: when the VM state changes, it should emit a signal to be caught by machine_widget (this will trigger GUI state update)
-* docs: run doxygen during GitHub workflow

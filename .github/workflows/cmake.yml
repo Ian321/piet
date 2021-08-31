@@ -36,6 +36,7 @@ jobs:
         mkdir ${{github.workspace}}/export
         mkdir ${{github.workspace}}/export/bin
         mkdir ${{github.workspace}}/export/lib
+        mkdir ${{github.workspace}}/export/doc
     - name: Copy files (not windows)
       if: ${{ !startsWith(matrix.os, 'windows') }}
       run: |
@@ -50,7 +51,7 @@ jobs:
         cp ${{github.workspace}}/build/src/core/${{env.BUILD_TYPE}}/PietCore.lib ${{github.workspace}}/export/lib/
         windeployqt ${{github.workspace}}/export/bin/ --release --no-compiler-runtime --no-translations --no-opengl-sw
     - name: Copy docs
-      run: cp -r ${{github.workspace}}/build/doc/ ${{github.workspace}}/export/
+      run: cp -r ${{github.workspace}}/build/doc/* ${{github.workspace}}/export/doc/
     - name: Upload build
       uses: actions/upload-artifact@v2
       with:
