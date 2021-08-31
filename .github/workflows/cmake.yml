@@ -18,19 +18,21 @@ jobs:
     # <Doxygen>
     - name: Install Doxygen (windows)
       if: startsWith(matrix.os, 'windows')
-      run: choco install doxygen.install
+      run: choco install doxygen.install texlive
     - name: Install Doxygen (ubuntu)
       if: startsWith(matrix.os, 'ubuntu')
-      run: sudo apt install -y doxygen
+      run: sudo apt install -y doxygen texlive-full
     - name: Install Doxygen (macos)
       if: startsWith(matrix.os, 'macos')
-      run: brew install doxygen
+      run: brew install doxygen texlive
     # </Doxygen>
     - uses: actions/checkout@v2
     - name: Configure CMake
       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
     - name: Build
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+    - name: Build docs
+      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
     - name: Create export dir
       run: |
         mkdir ${{github.workspace}}/export
