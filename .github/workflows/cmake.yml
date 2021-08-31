@@ -18,13 +18,13 @@ jobs:
     # <Doxygen>
     - name: Install Doxygen (windows)
       if: startsWith(matrix.os, 'windows')
-      run: choco install doxygen texlive
+      run: choco install doxygen.install texlive
     - name: Install Doxygen (ubuntu)
       if: startsWith(matrix.os, 'ubuntu')
-      run: sudo apt install -y doxygen texlive
+      run: sudo apt install -y doxygen texlive texlive-font-utils
     - name: Install Doxygen (macos)
       if: startsWith(matrix.os, 'macos')
-      run: brew install doxygen mactex
+      run: brew install --cask mactex-no-gui doxygen
     # </Doxygen>
     - uses: actions/checkout@v2
     - name: Configure CMake
@@ -50,7 +50,11 @@ jobs:
         cp ${{github.workspace}}/build/src/gui/${{env.BUILD_TYPE}}/gui.exe ${{github.workspace}}/export/bin/
         cp ${{github.workspace}}/build/src/core/${{env.BUILD_TYPE}}/PietCore.lib ${{github.workspace}}/export/lib/
         windeployqt ${{github.workspace}}/export/bin/ --release --no-compiler-runtime --no-translations --no-opengl-sw
-    - name: Copy docs
+    - name: Copy docs (not macos)
+      if: ${{ !startsWith(matrix.os, 'macos') }}
+      run: cp -r ${{github.workspace}}/build/doc/* ${{github.workspace}}/export/doc/
+    - name: Copy docs (macos)
+      if: startsWith(matrix.os, 'macos')
       run: cp -r ${{github.workspace}}/build/doc/ ${{github.workspace}}/export/doc/
     - name: Upload build
       uses: actions/upload-artifact@v2

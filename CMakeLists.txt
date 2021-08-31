@@ -22,7 +22,7 @@ if(DOXYGEN_FOUND)
   add_custom_target(doc ALL
     ${DOXYGEN_EXECUTABLE} ${DOXYGEN_CONFIG}
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-    DEPENDS PietCore gui
+    DEPENDS PietCore gui piet-console
     COMMENT "Generating API documentation with Doxygen" VERBATIM)
   execute_process(COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_CONFIG}
     OUTPUT_FILE "${CMAKE_CURRENT_BINARY_DIR}/doxygen.exec.log"
