@@ -15,6 +15,17 @@ jobs:
     steps:
     - name: Install Qt
       uses: jurplel/install-qt-action@v2
+    # <Doxygen>
+    - name: Install Doxygen (windows)
+      if: startsWith(matrix.os, 'windows')
+      run: choco install doxygen.install
+    - name: Install Doxygen (ubuntu)
+      if: startsWith(matrix.os, 'ubuntu')
+      run: apt install -y doxygen
+    - name: Install Doxygen (macos)
+      if: startsWith(matrix.os, 'macos')
+      run: brew install doxygen
+    # </Doxygen>
     - uses: actions/checkout@v2
     - name: Configure CMake
       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
